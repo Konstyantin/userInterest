@@ -1,0 +1,16 @@
+{
+    "name": "root/user-interst",
+    "authors": [
+        {
+            "name": "Konstantin",
+            "email": "kostyannagula@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Acme\\": "src/"
+        }
+    }
+}
