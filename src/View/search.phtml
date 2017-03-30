@@ -2,7 +2,7 @@
     <div class="row">
         <h2 class="text-center">Search action</h2>
         <div class="search-form">
-            <div class="col-lg-6 col-lg-offset-3">
+            <div class="col-lg-6 col-lg-offset-3 clearfix">
                 <form action="#" method="post">
                     <div class="form-group">
                         <label for="first-name">First name</label>
@@ -16,7 +16,18 @@
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control" id="email" placeholder="Email:">
                     </div>
+                    <div>
+                        <label for="age">Age</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="min-age" placeholder="Min">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="max-age" placeholder="Max">
+                        </div>
+                    </div>
                     <div class="form-group">
+                        <label for="interest">Interest</label>
+                        <hr>
                         <label class="checkbox-inline" for="football">
                             <input type="checkbox" name="football" id="football" value="football">Football
                         </label><br>
@@ -28,7 +39,7 @@
                         </label><br>
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-success" value="Submit">
+                        <input type="submit" name="submit" class="btn btn-success">
                         <input type="reset" class="btn btn-danger" value="Clear">
                     </div>
                 </form>

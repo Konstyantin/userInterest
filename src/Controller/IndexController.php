@@ -10,10 +10,21 @@ namespace Acme\Controller;
 
 use App\Controller;
 
+/**
+ * Class IndexController
+ * @package Acme\Controller
+ */
 class IndexController extends Controller
 {
-   public function searchAction()
-   {
+    /**
+     * Search action
+     *
+     * Allow search data in database
+     *
+     * @return bool
+     */
+    public function searchAction()
+    {
         return $this->render('search');
-   }
+    }
 }
