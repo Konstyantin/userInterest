@@ -7,5 +7,5 @@
  */
 
 return [
-    'search' => 'index/search',
+    'search' => 'user/search',
 ];

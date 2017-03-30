@@ -14,7 +14,7 @@ use App\Controller;
  * Class IndexController
  * @package Acme\Controller
  */
-class IndexController extends Controller
+class UserController extends Controller
 {
     /**
      * Search action

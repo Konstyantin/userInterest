@@ -8,6 +8,7 @@
 
 namespace App;
 
+use App\Request;
 
 /**
  * Class Controller
@@ -15,6 +16,19 @@ namespace App;
  */
 abstract class Controller
 {
+    /**
+     * @var \App\Request
+     */
+    protected $request;
+
+    /**
+     * Controller constructor.
+     */
+    public function __construct()
+    {
+        $this->request = new Request();
+    }
+
     /**
      * Return a render view
      *
@@ -45,15 +59,5 @@ abstract class Controller
     protected function setFlashMessage(string $message)
     {
         return (string)$message;
-    }
-
-    /**
-     * Check is submitted form or not
-     *
-     * @return bool
-     */
-    protected function isSubmit()
-    {
-        return isset($_POST['submit']) ? true : false;
     }
 }
