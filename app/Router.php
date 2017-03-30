@@ -40,6 +40,7 @@ class Router
             return trim($_SERVER['REQUEST_URI'], '/');
         }
     }
+
     /**
      * Initiate Router
      */
@@ -47,7 +48,6 @@ class Router
     {
         // get string form request
         $uri = $this->getURI();
-
 
         // Check the presence of such a query  in a array of routes
         foreach ($this->routes as $uriPattern => $path) {

@@ -8,10 +8,12 @@
  */
 namespace Acme\Controller;
 
-class IndexController
+use App\Controller;
+
+class IndexController extends Controller
 {
-   public function indexAction()
+   public function searchAction()
    {
-       echo 'index';
+        return $this->render('search');
    }
 }
