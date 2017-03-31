@@ -19,24 +19,29 @@
                     <div>
                         <label for="age">Age</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="min-age" placeholder="Min">
+                            <input type="text" class="form-control" name="min-age" id="min-age" placeholder="Min">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="max-age" placeholder="Max">
+                            <input type="text" class="form-control" name="max-age" id="max-age" placeholder="Max">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="created">Created</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="min-created" id="min-created" placeholder="Min">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="max-created" id="max-created" placeholder="Max">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="interest">Interest</label>
                         <hr>
-                        <label class="checkbox-inline" for="football">
-                            <input type="checkbox" name="football-interest" id="football">Football
-                        </label><br>
-                        <label class="checkbox-inline" for="paint">
-                            <input type="checkbox" name="paint-interest" id="paint">Paint
-                        </label><br>
-                        <label class="checkbox-inline" for="write">
-                            <input type="checkbox" name="write-interest" id="write">Write
-                        </label><br>
+                        <?php foreach ($data as $item): ?>
+                            <label class="checkbox-inline" for="<?=$item->name;?>">
+                                <input type="checkbox" name="<?=$item->name;?>-interest" id="<?=$item->name;?>"><?=$item->name;?>
+                            </label><br>
+                        <?php endforeach;?>
                     </div>
                     <div class="form-group">
                         <input type="submit" name="submit" class="btn btn-success">

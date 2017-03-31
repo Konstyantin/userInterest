@@ -8,4 +8,5 @@
 
 return [
     'search' => 'user/search',
+    '' => 'user/search',
 ];

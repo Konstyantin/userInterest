@@ -8,7 +8,10 @@
  */
 namespace Acme\Controller;
 
+use Acme\Entity\Interest;
 use App\Controller;
+use Acme\Entity\User;
+use App\Request;
 
 /**
  * Class IndexController
@@ -25,6 +28,8 @@ class UserController extends Controller
      */
     public function searchAction()
     {
-        return $this->render('search');
+        $list = Interest::getList();
+
+        return $this->render('search', $list);
     }
 }
