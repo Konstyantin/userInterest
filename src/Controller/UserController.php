@@ -9,10 +9,8 @@
 namespace Acme\Controller;
 
 use Acme\Entity\Interest;
-use App\Controller;
 use Acme\Entity\User;
-use App\Request;
-
+use App\Controller;
 /**
  * Class IndexController
  * @package Acme\Controller
@@ -28,8 +26,27 @@ class UserController extends Controller
      */
     public function searchAction()
     {
-        $list = Interest::getList();
+        $interest = Interest::getList();
 
-        return $this->render('search', $list);
+        return $this->render('search', $interest);
+    }
+
+    /**
+     * Registration user
+     *
+     * @return bool
+     */
+    public function registerAction()
+    {
+        $data = $this->request->getSendData();
+
+        $interest = Interest::getList();
+
+        if ($data) {
+            $result = User::create($data);
+
+        }
+
+        return $this->render('register', $interest);
     }
 }

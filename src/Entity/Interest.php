@@ -24,7 +24,7 @@ class Interest
      *
      * @return array
      */
-    public function getList()
+    public static function getList()
     {
         $db = Db::connect();
 
@@ -35,5 +35,45 @@ class Interest
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    /**
+     * Create new Interest
+     *
+     * Create new interest for filters user on searching
+     *
+     * @param string $name
+     * @return bool
+     */
+    public static function create(string $name)
+    {
+        $db = Db::connect();
+
+        $sql = 'INSERT INTO interest (name) VALUES (:name)';
+
+        $query = $db->prepare($sql);
+
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+
+        return $query->execute();
+    }
+
+    /**
+     * Delete interest by id
+     *
+     * @param int $id
+     * @return bool
+     */
+    public static function delete(int $id)
+    {
+       $db = Db::connect();
+
+       $sql = 'DELETE FROM interest WHERE id = :id';
+
+       $query = $db->prepare($sql);
+
+       $query->bindParam(':id', $id, PDO::PARAM_INT);
+
+       return $query->execute();
     }
 }

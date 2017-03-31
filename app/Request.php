@@ -25,6 +25,26 @@ class Request
     private $interest = [];
 
     /**
+     * Get data
+     *
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * Get interest
+     *
+     * @return array
+     */
+    public function getInterest()
+    {
+        return $this->interest;
+    }
+
+    /**
      * Get data which store $_POST
      *
      * @return mixed
@@ -65,6 +85,8 @@ class Request
         // get sent data
         if ($this->isSubmit()) {
 
+            $this->setUnixFormat();
+
             $data = $this->getPost();
 
             foreach ($data as $key => $value) {
@@ -90,7 +112,6 @@ class Request
 
         // check data is empty
         if ($data) {
-
             foreach ($data as $key => $value) {
 
                 // check sent data is store interest user
@@ -101,6 +122,26 @@ class Request
         }
         // return array data or null
         return $this->interest;
+    }
+
+    /**
+     * Set unix format for date
+     */
+    public function setUnixFormat()
+    {
+        $_POST['min-created'] = $this->convertToUnix(isset($_POST['min-created']));
+        $_POST['max-created'] = $this->convertToUnix(isset($_POST['max-created']));
+    }
+
+    /**
+     * Convert date string unix format date
+     *
+     * @param string $date
+     * @return false|int|null
+     */
+    public function convertToUnix(string $date)
+    {
+        return strtotime($date) ?? null;
     }
 
     /**
