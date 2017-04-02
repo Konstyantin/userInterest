@@ -8,5 +8,5 @@
 
 return [
     'search' => 'user/search',
-    'register' => 'user/register'
+    'register' => 'user/register',
 ];

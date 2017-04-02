@@ -11,6 +11,8 @@ namespace Acme\Controller;
 use Acme\Entity\Interest;
 use Acme\Entity\User;
 use App\Controller;
+use App\FormData;
+
 /**
  * Class IndexController
  * @package Acme\Controller
@@ -27,6 +29,11 @@ class UserController extends Controller
     public function searchAction()
     {
         $interest = Interest::getList();
+
+        if ($this->request->isSubmit()) {
+            $sendData = $this->request->getSendData();
+            $form = new FormData($sendData);
+        }
 
         return $this->render('search', $interest);
     }

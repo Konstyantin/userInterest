@@ -19,10 +19,6 @@ class Request
      */
     private $data = [];
 
-    /**
-     * @var array $interest interest data
-     */
-    private $interest = [];
 
     /**
      * Get data
@@ -32,16 +28,6 @@ class Request
     public function getData()
     {
         return $this->data;
-    }
-
-    /**
-     * Get interest
-     *
-     * @return array
-     */
-    public function getInterest()
-    {
-        return $this->interest;
     }
 
     /**
@@ -101,36 +87,12 @@ class Request
     }
 
     /**
-     * Get interest data inside sent data
-     *
-     * @return array
-     */
-    public function getInterestData()
-    {
-        // get sent data
-        $data = $this->getSendData();
-
-        // check data is empty
-        if ($data) {
-            foreach ($data as $key => $value) {
-
-                // check sent data is store interest user
-                if ($this->checkIsInterest($key)) {
-                    $this->interest[$key] = $value; // set interest
-                }
-            }
-        }
-        // return array data or null
-        return $this->interest;
-    }
-
-    /**
      * Set unix format for date
      */
     public function setUnixFormat()
     {
-        $_POST['min-created'] = $this->convertToUnix(isset($_POST['min-created']));
-        $_POST['max-created'] = $this->convertToUnix(isset($_POST['max-created']));
+        $_POST['min-created'] = $this->convertToUnix($_POST['min-created']);
+        $_POST['max-created'] = $this->convertToUnix($_POST['max-created']);
     }
 
     /**
@@ -142,14 +104,5 @@ class Request
     public function convertToUnix(string $date)
     {
         return strtotime($date) ?? null;
-    }
-
-    /**
-     * @param string $string
-     * @return bool|int
-     */
-    public function checkIsInterest(string $string)
-    {
-        return strpos($string, 'interest');
     }
 }

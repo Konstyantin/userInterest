@@ -18,22 +18,17 @@ use PDO;
 class User
 {
     /**
-     * @var string $sql select users
-     */
-    public $sql = "SELECT * FROM user";
-
-    /**
      * Get list users
      *
      * Get list all exists user in database
      *
      * @return array
      */
-    public function getList()
+    public static function getList()
     {
         $db = Db::connect();
 
-        $sql = $this->sql;
+        $sql = 'SELECT * FROM user';
 
         $query = $db->prepare($sql);
 
