@@ -24,11 +24,9 @@ class User
      *
      * @return array
      */
-    public static function getList()
+    public static function getList(string $sql)
     {
         $db = Db::connect();
-
-        $sql = 'SELECT * FROM user';
 
         $query = $db->prepare($sql);
 

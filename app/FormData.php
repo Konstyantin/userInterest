@@ -9,6 +9,7 @@
 namespace App;
 
 use App\FormConst;
+use App\QueryBuilder;
 
 /**
  * Class FormData
@@ -20,7 +21,7 @@ class FormData
     /**
      * @var array $data send form data
      */
-    public $data;
+    private $data;
 
     /**
      * @var array $interest interest user data
@@ -47,6 +48,47 @@ class FormData
     }
 
     /**
+     * Get data
+     *
+     * @param string $key
+     * @return array
+     */
+    public function getData(string $key)
+    {
+        return $this->data[$key];
+    }
+
+    /**
+     * Get interest
+     *
+     * @return array
+     */
+    public function getInterest()
+    {
+        return $this->interest;
+    }
+
+    /**
+     * Get created
+     *
+     * @return array
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Get age
+     *
+     * @return array
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
      * Get user by interest
      *
      * @return array
@@ -54,7 +96,7 @@ class FormData
     public function getInterestData()
     {
         foreach ($this->data as $key => $value) {
-            if ($this->checkIndexData($key, 'interest')) {
+            if($this->checkIndexData($key, 'interest')) {
                 $this->interest[] = $value;
             }
         }
@@ -115,7 +157,6 @@ class FormData
     {
         return strpos($key, $index);
     }
-
 
     /**
      * Check validate age data

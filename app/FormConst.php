@@ -20,5 +20,5 @@ final class FormConst
     const MAX_AGE = 100;
     const MIN_AGE = 0;
     const MAX_DATE = 2147483647;
-    const MIN_DATE = 1491109390;
+    const MIN_DATE = -2147483648;
 }

@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row">
+    <div class="row clearfix">
         <h2 class="text-center">Search action</h2>
         <div class="search-form">
-            <div class="col-lg-6 col-lg-offset-3 clearfix">
+            <div class="col-lg-6 col-lg-offset-3">
                 <form action="#" method="post" novalidate>
                     <div class="form-group">
                         <label for="first-name">First name</label>
@@ -37,14 +37,14 @@
                     <div class="form-group">
                         <label for="interest">Interest</label>
                         <hr>
-                        <?php foreach ($data as $item): ?>
+                        <?php foreach ($data['interest'] as $item): ?>
                             <label class="checkbox-inline" for="<?=$item->name;?>">
                                 <input type="checkbox" name="<?=$item->name;?>-interest" id="<?=$item->name;?>" value="<?=$item->id;?>"><?=$item->name;?>
                             </label><br>
                         <?php endforeach;?>
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-success">
+                        <input type="submit" name="submit" class="btn btn-success" value="Submit">
                         <input type="reset" class="btn btn-danger" value="Clear">
                     </div>
                 </form>
