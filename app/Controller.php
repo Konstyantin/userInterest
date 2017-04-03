@@ -51,6 +51,16 @@ abstract class Controller
     }
 
     /**
+     * Redirect to route
+     *
+     * @param string $path
+     */
+    protected function redirect(string $path)
+    {
+        return header('Location: ' . ROOT_DIR . $path);
+    }
+
+    /**
      * Return flash message
      *
      * @param string $message

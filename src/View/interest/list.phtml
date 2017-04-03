@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <h2 class="text-center">Interest list</h2>
+        <a href="interest/add">Add interest</a>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($data as $interest): ?>
+                <tr>
+                    <td><?=$interest->id;?></td>
+                    <td><?=$interest->name;?>
+                </tr>
+            <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

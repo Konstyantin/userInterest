@@ -94,8 +94,10 @@ class Request
      */
     public function setUnixFormat()
     {
-        $_POST['min-created'] = $this->convertToUnix($_POST['min-created']);
-        $_POST['max-created'] = $this->convertToUnix($_POST['max-created']);
+        if (isset($_POST['min-created']) && isset($_POST['max-created'])) {
+            $_POST['min-created'] = $this->convertToUnix($_POST['min-created']);
+            $_POST['max-created'] = $this->convertToUnix($_POST['max-created']);
+        }
     }
 
     /**

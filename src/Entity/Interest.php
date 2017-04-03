@@ -49,13 +49,15 @@ class Interest
     {
         $db = Db::connect();
 
-        $sql = 'INSERT INTO interest (name) VALUES (:name)';
+        $sql = 'INSERT INTO interest (name) VALUES (:name);';
 
         $query = $db->prepare($sql);
 
         $query->bindParam(':name', $name, PDO::PARAM_STR);
 
-        return $query->execute();
+        $query->execute();
+
+        return $query;
     }
 
     /**

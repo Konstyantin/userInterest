@@ -3,6 +3,7 @@
         <h2 class="text-center">Search action</h2>
         <div class="search-form">
             <div class="col-lg-6 col-lg-offset-3">
+                <a href="interest/add">Add interest</a>
                 <form action="#" method="post" novalidate>
                     <div class="form-group">
                         <label for="first-name">First name</label>
@@ -37,7 +38,7 @@
                     <div class="form-group">
                         <label for="interest">Interest</label>
                         <hr>
-                        <?php foreach ($data['interest'] as $item): ?>
+                        <?php foreach ($data as $item): ?>
                             <label class="checkbox-inline" for="<?=$item->name;?>">
                                 <input type="checkbox" name="<?=$item->name;?>-interest" id="<?=$item->name;?>" value="<?=$item->id;?>"><?=$item->name;?>
                             </label><br>

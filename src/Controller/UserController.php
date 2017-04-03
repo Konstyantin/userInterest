@@ -56,10 +56,10 @@ class UserController extends Controller
             // get user list by sql query
             $userList = User::getList($searchData);
 
-            return $this->render('userList', $userList);
+            return $this->render('user/userList', $userList);
         }
 
-        return $this->render('search', ['interest' => $interest]);
+        return $this->render('user/search', $interest);
     }
 
     /**
@@ -77,6 +77,6 @@ class UserController extends Controller
             $result = User::create($data);
         }
 
-        return $this->render('register', $interest);
+        return $this->render('user/register', $interest);
     }
 }
