@@ -1,8 +1,16 @@
 <div class="container">
     <div class="row">
         <h2 class="text-center">Registration action</h2>
+        <a href="search" class="btn btn-primary">Back</a>
         <div class="search-form">
             <div class="col-lg-6 col-lg-offset-3 clearfix">
+                <?php if (isset($data['errors'])): ?>
+                    <div class="alert alert-danger">
+                        <?php foreach ($data['errors'] as $error):?>
+                            <p><?=$error?></p>
+                        <?php endforeach;?>
+                    </div>
+                <?php endif;?>
                 <form action="#" method="post" novalidate>
                     <div class="form-group">
                         <label for="first-name">First name</label>
@@ -19,20 +27,20 @@
                     <div>
                         <label for="age">Age</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="age" id="age" placeholder="Age">
+                            <input type="text" class="form-control" name="age" id="age" placeholder="Age:">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="interest">Interest</label>
                         <hr>
-                        <?php foreach ($data as $item): ?>
+                        <?php foreach ($data['interest'] as $item): ?>
                             <label class="checkbox-inline" for="<?=$item->name;?>">
                                 <input type="checkbox" name="<?=$item->name;?>-interest" id="<?=$item->name;?>" value="<?=$item->id;?>"><?=$item->name;?>
                             </label><br>
                         <?php endforeach;?>
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-success">
+                        <input type="submit" name="submit" class="btn btn-success" value="Submit">
                         <input type="reset" class="btn btn-danger" value="Clear">
                     </div>
                 </form>

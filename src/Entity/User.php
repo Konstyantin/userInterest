@@ -68,4 +68,24 @@ class User
 
         return $query->execute() ? true : false;
     }
+
+    /**
+     * Get last user id
+     *
+     * Get last created user id
+     *
+     * @return mixed
+     */
+    public static function getLastUserId()
+    {
+        $db = Db::connect();
+
+        $sql = 'SELECT id FROM user ORDER BY id DESC LIMIT 1';
+
+        $query = $db->prepare($sql);
+
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
 }

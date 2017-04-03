@@ -10,7 +10,10 @@ namespace Acme\Controller;
 
 use Acme\Entity\Interest;
 use Acme\Entity\User;
+use Acme\Entity\UserInterest;
+use Acme\Model\User\RegisterValidation;
 use App\Controller;
+use App\Db;
 use App\FormData;
 use App\QueryData;
 
@@ -69,14 +72,45 @@ class UserController extends Controller
      */
     public function registerAction()
     {
-        $data = $this->request->getSendData();
-
+        // interests list
         $interest = Interest::getList();
 
-        if ($data) {
-            $result = User::create($data);
+        // check submit form
+        if ($this->request->isSubmit()) {
+
+            // send form data
+            $data = $this->request->getSendData();
+
+            $validate = new RegisterValidation($data);
+
+            $result = $validate->formValidate();
+
+            if ($result === true) {
+
+                $form = new FormData($data);
+
+                // get interest data
+                $userInterest = $form->getInterestData();
+
+                // if send form data is not empty
+                if ($data) {
+
+                    // create new user
+                    $result = User::create($data);
+
+                    // get id last created user
+                    $id = User::getLastUserId()->id;
+
+                    // add user interest
+                    UserInterest::addUserInterest($id, $userInterest);
+                }
+
+                return $this->redirect('search');
+            }
+
+            return $this->render('user/register', ['errors' => $result, 'interest' => $interest]);
         }
 
-        return $this->render('user/register', $interest);
+        return $this->render('user/register', ['interest' => $interest]);
     }
 }

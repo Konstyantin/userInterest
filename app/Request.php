@@ -78,7 +78,7 @@ class Request
             foreach ($data as $key => $value) {
                 // check retrieved data is empty
                 if (!$this->isEmpty($value)) {
-                    $this->data[$key] = $value; // write data in store
+                    $this->data[$key] = trim(strip_tags($value)); // write data in store
                 }
             }
 

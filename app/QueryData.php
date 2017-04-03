@@ -40,7 +40,7 @@ class QueryData
     /**
      * Check send first name value
      */
-    public function checkSendFirstName()
+    protected function checkSendFirstName()
     {
         // get first name from form if data is sent
         $firstName = $this->formData->getData('first-name');
@@ -55,7 +55,7 @@ class QueryData
     /**
      * Check send last name value
      */
-    public function checkSendLastName()
+    protected function checkSendLastName()
     {
         // get first name from form if data is sent
         $lastName = $this->formData->getData('last-name');
@@ -70,7 +70,7 @@ class QueryData
     /**
      * Check send email value
      */
-    public function checkSendEmail()
+    protected function checkSendEmail()
     {
         // get email field from form if data is sent
         $email = $this->formData->getData('email');
@@ -85,7 +85,7 @@ class QueryData
     /**
      * Check send age value
      */
-    public function checkSendAge()
+    protected function checkSendAge()
     {
         // get age field from form if data is sent
         $age = $this->formData->getAgeData();
@@ -100,7 +100,7 @@ class QueryData
     /**
      * Check send created data value
      */
-    public function checkSendCreated()
+    protected function checkSendCreated()
     {
         // get email from form if data is sent
         $created = $this->formData->getCreatedData();
@@ -115,7 +115,7 @@ class QueryData
     /**
      * Check send interest data value
      */
-    public function checkSendInterest()
+    protected function checkSendInterest()
     {
         // if interest data form form is sent
         if ($this->formData->getInterestData()) {
