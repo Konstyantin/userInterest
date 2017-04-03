@@ -88,4 +88,25 @@ class User
 
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
+    /**
+     * Get user by id
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public static function getUserById(int $id)
+    {
+        $db = Db::connect();
+
+        $sql = 'SELECT user.first_name, user.last_name FROM user WHERE id = :id';
+
+        $query = $db->prepare($sql);
+
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
 }

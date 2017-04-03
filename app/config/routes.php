@@ -12,6 +12,8 @@
 return [
     'search'        => 'user/search',
     'register'      => 'user/register',
+    'user/'         => 'user/view/$1',
+//    'user/([0-9]+)'         => 'user/view/$1',
     'interest/add'  => 'interest/add',
     'interest/list' => 'interest/list',
 ];

@@ -104,13 +104,27 @@ class UserController extends Controller
                     // add user interest
                     UserInterest::addUserInterest($id, $userInterest);
                 }
-
                 return $this->redirect('search');
             }
-
             return $this->render('user/register', ['errors' => $result, 'interest' => $interest]);
         }
-
         return $this->render('user/register', ['interest' => $interest]);
+    }
+
+    /**
+     * View data user
+     *
+     * @param $id
+     * @return bool
+     */
+    public function viewAction($id)
+    {
+        // get user
+        $user = User::getUserById($id);
+
+        // user interest
+        $interest = Interest::getInterestByUserId($id);
+
+        return $this->render('user/view', ['user' => $user, 'interest' => $interest]);
     }
 }

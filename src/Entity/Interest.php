@@ -78,4 +78,25 @@ class Interest
 
        return $query->execute();
     }
+
+    /**
+     * Get user data by id
+     *
+     * @param int $id
+     * @return array
+     */
+    public static function getInterestByUserId(int $id)
+    {
+        $db = Db::connect();
+
+        $sql = 'SELECT interest.name FROM interest INNER JOIN user_interest ON user_interest.interest_id = interest.id WHERE user_interest.user_id = :id';
+
+        $query = $db->prepare($sql);
+
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }
