@@ -3,7 +3,7 @@
         <h2 class="text-center">Registration action</h2>
         <div class="search-form">
             <div class="col-lg-6 col-lg-offset-3 clearfix">
-                <a href="search" class="btn btn-primary">Back</a>
+                <a href="<?=ROOT_DIR;?>search" class="btn btn-primary">Back</a>
                 <?php if (isset($data['errors'])): ?>
                     <div class="alert alert-danger">
                         <?php foreach ($data['errors'] as $error):?>
