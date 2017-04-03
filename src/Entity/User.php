@@ -18,15 +18,24 @@ use PDO;
 class User
 {
     /**
+     * @var string
+     */
+    private static $defaultSearchQuery = 'SELECT * FROM user';
+
+    /**
      * Get list users
      *
      * Get list all exists user in database
      *
      * @return array
      */
-    public static function getList(string $sql)
+    public static function getList(string $sql = null)
     {
         $db = Db::connect();
+
+        $sql = $sql ? $sql : self::$defaultSearchQuery;
+
+        var_dump($sql);
 
         $query = $db->prepare($sql);
 

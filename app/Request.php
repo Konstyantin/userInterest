@@ -81,6 +81,9 @@ class Request
                     $this->data[$key] = $value; // write data in store
                 }
             }
+
+            unset($this->data['submit']);
+
             // return array data or null
             return $this->data;
         }

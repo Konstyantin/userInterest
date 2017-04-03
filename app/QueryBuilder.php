@@ -19,8 +19,8 @@ class QueryBuilder
      * @var string $query sql query to database
      */
     private $query = "SELECT user.id, user.first_name, user.last_name, user.age, user.email FROM user
-                      INNER JOIN user_interest ON user.id=user_interest.user_id
-                      INNER JOIN interest ON interest.id=user_interest.interest_id";
+                      LEFT JOIN user_interest ON user.id=user_interest.user_id
+                      LEFT JOIN interest ON interest.id=user_interest.interest_id";
 
     /**
      * Get by first name
@@ -31,9 +31,9 @@ class QueryBuilder
     public function getFirstName(string $firstName)
     {
         if ($this->checkWhere()) {
-            return $this->query = $this->query . " AND first_name LIKE '%$firstName%'";
+            return $this->query = $this->query . " AND user.first_name LIKE '%$firstName%'";
         }
-        return $this->query = $this->query . " WHERE first_name LIKE '%$firstName%'";
+        return $this->query = $this->query . " WHERE user.first_name LIKE '%$firstName%'";
     }
 
     /**
@@ -45,10 +45,10 @@ class QueryBuilder
     public function getLastName(string $lastName)
     {
         if ($this->checkWhere()) {
-            return $this->query = $this->query . " AND last_name LIKE '%$lastName%'";
+            return $this->query = $this->query . " AND user.last_name LIKE '%$lastName%'";
         }
 
-        return $this->query = $this->query . " WHERE last_name LIKE '%$lastName%'";
+        return $this->query = $this->query . " WHERE user.last_name LIKE '%$lastName%'";
     }
 
     /**
@@ -60,10 +60,10 @@ class QueryBuilder
     public function getEmail(string $email)
     {
         if ($this->checkWhere()) {
-            return $this->query = $this->query . " AND email = '$email'";
+            return $this->query = $this->query . " AND user.email = '$email'";
         }
 
-        return $this->query = $this->query . " WHERE email = '$email'";
+        return $this->query = $this->query . " WHERE user.email = '$email'";
     }
 
     /**
@@ -78,10 +78,10 @@ class QueryBuilder
         $max = $age['max-age'];
 
         if ($this->checkWhere()) {
-            return $this->query = $this->query . " AND age BETWEEN $min AND $max";
+            return $this->query = $this->query . " AND user.age BETWEEN $min AND $max";
         }
 
-        return $this->query = $this->query . " WHERE age BETWEEN $min AND $max";
+        return $this->query = $this->query . " WHERE user.age BETWEEN $min AND $max";
     }
 
     /**
@@ -96,10 +96,10 @@ class QueryBuilder
         $max = $age['max-created'];
 
         if ($this->checkWhere()) {
-            return $this->query = $this->query . " AND created_at BETWEEN $min AND $max";
+            return $this->query = $this->query . " AND user.created_at BETWEEN $min AND $max";
         }
 
-        return $this->query = $this->query . " WHERE created_at BETWEEN $min AND $max";
+        return $this->query = $this->query . " WHERE user.created_at BETWEEN $min AND $max";
     }
 
     /**

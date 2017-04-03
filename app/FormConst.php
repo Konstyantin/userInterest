@@ -17,8 +17,8 @@ namespace App;
  */
 final class FormConst
 {
-    const MAX_AGE = 100;
-    const MIN_AGE = 0;
-    const MAX_DATE = 2147483647;
-    const MIN_DATE = -2147483648;
+    const MAX_AGE = 100;            // max user lifetime years
+    const MIN_AGE = 0;              // min user lifetime years
+    const MAX_DATE = 2147483647;    // max unix time date
+    const MIN_DATE = -2147483648;   // min unix time date
 }

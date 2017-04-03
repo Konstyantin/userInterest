@@ -29,14 +29,34 @@ class UserController extends Controller
      */
     public function searchAction()
     {
+        // interest list for view
         $interest = Interest::getList();
 
+        // check submit form
         if ($this->request->isSubmit()) {
+            // get send form data
             $sendData = $this->request->getSendData();
-            $form = new FormData($sendData);
-            $query = new QueryData($form);
-            $searchData = $query->getQueryData();
+
+            // default form data
+            $searchData = null;
+
+            // check empty form data
+            if (!empty($sendData)) {
+
+                // separate send data as interest, created, age, and all data
+                $form = new FormData($sendData);
+
+                // build sql query by send form data
+                $query = new QueryData($form);
+
+                // get sql query
+                $searchData = $query->getQueryData();
+            }
+
+            // get user list by sql query
             $userList = User::getList($searchData);
+
+            return $this->render('userList', $userList);
         }
 
         return $this->render('search', ['interest' => $interest]);
